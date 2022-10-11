@@ -1,0 +1,54 @@
+.cards{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.imagen_load{
+   padding-left: 600px;
+	
+}   
+.loader span {
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    animation: blur 2s linear infinite;
+    line-height: 20px;
+    transition: all 0.5s;
+    letter-spacing: 0.2em;
+   }
+   
+   @keyframes blur {
+    0%, 90% {
+     filter: blur(0);
+    }
+   
+    50% {
+     filter: blur(10px);
+    }
+   }
+
+   @media(max-width:100px){
+    .background{
+        background-image: none;
+    }
+    .card-container{
+        flex-wrap: wrap;
+    }
+    .card{
+        height: 60rem;
+    }
+}
+
+@media(max-width:480px){
+    .card-image img{
+        margin-top: -4rem;
+    }
+    .card-container{
+        padding: 1rem;
+    }
+    .card{
+        min-width: 30rem;
+        width: 30rem;
+    }
+}

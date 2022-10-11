@@ -1,0 +1,13 @@
+.danger label {
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    font-size: 17px;
+    color: red;
+    font-weight: 700;
+  }
+  .question label {
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    font-size: 17px;
+    font-weight: 700;
+  }
