@@ -4,10 +4,18 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.imagen_load{
-   padding-left: 600px;
-	
+.imagen_not_found{
+   
+   padding-left: 550px;	
 }   
+
+.imagen_not_found h2{
+   
+    font-size: x-large;	
+    font-weight: 900;
+    padding-left: 100px;
+ }   
+
 .loader span {
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;

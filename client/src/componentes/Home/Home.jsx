@@ -10,7 +10,8 @@ import {getPokemon} from '../../redux/actions/index'
 export default function Home() {
 
   const dispatch = useDispatch();
-  const allPokemon= useSelector((state)=>state.pokemon)
+  const allPokemon= useSelector((state)=>state.allPokemon)
+  // const pokemon= useSelector((state)=>state.allPokemon)
 
   const [ , setOrden] = useState('')
 
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <div>
+     
 
       <Link to="/create">
         <button> Crear Pokemon</button>
@@ -64,6 +66,7 @@ export default function Home() {
       allPokemon={allPokemon.length}
       paginado={paginado}
       />
+
     </div>
   )
 }
