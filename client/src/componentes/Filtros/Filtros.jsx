@@ -14,11 +14,13 @@ export default function Filtros({setpaginaActual,setOrden}) {
     },[dispatch])
 
     function handleFilterByType(e){
+        setpaginaActual(1)
         dispatch(filterPokemonsByType(e.target.value));
         setOrden(`Ordenado ${e.target.value}`)
     }
 
     function handleFilterCreated(e){
+        setpaginaActual(1)
         dispatch(filterCreated(e.target.value))
         setOrden(`Ordenado ${e.target.value}`)
 

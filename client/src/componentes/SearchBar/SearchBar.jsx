@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getNamePokemon } from '../../redux/actions'
 
 export default function SearchBar() {
+ 
+  const pokemons= useSelector((state)=>state.pokemon)
 
     const dispatch=useDispatch()
     const [name, setname] = useState("")
@@ -16,10 +18,14 @@ export default function SearchBar() {
 
     function handleSubmit(e){
       e.preventDefault()
-      if(name!== ""){
-        dispatch(getNamePokemon(name))
-        setname(" ")
+      if(!pokemons.find(e=>e.name.toLowerCase()===name.toLowerCase())){
+        alert("El pokemon no existe")
+    }else{
+      dispatch(getNamePokemon(name))
+      setname("")
+
     }
+    
   }
   return (
     <div>
@@ -29,6 +35,7 @@ export default function SearchBar() {
           type="text"
           placeholder='Buscar pokemon...'
           onChange={(e)=>handleInputChange(e)}
+          value={name}
           />
          <button 
           type='submit'>Buscar</button>

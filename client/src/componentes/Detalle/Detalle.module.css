@@ -1,0 +1,166 @@
+
+.loader span {
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    animation: blur 2s linear infinite;
+    line-height: 20px;
+    transition: all 0.5s;
+    letter-spacing: 0.2em;
+   }
+   
+   @keyframes blur {
+    0%, 90% {
+     filter: blur(0);
+    }
+   
+    50% {
+     filter: blur(10px);
+    }
+   }
+
+   @media(max-width:100px){
+    .background{
+        background-image: none;
+    }
+    .card-container{
+        flex-wrap: wrap;
+    }
+    .card{
+        height: 60rem;
+    }
+}
+
+@media(max-width:480px){
+    .card-image img{
+        margin-top: -4rem;
+    }
+    .card-container{
+        padding: 1rem;
+    }
+    .card{
+        min-width: 30rem;
+        width: 30rem;
+    }
+}
+
+.todo{
+    background-image: url("../../media/1794027.png");
+    text-transform: capitalize;
+    font-family: "Courier New", monospace;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    padding: 50px;
+    margin: 0 auto;
+    width: 1000px; 
+    height: auto;
+}
+
+.barra{
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    text-align: center;
+
+}
+.span_1{
+    
+    margin-right: 80%;
+}
+
+.altura{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.moreinfo{
+    display: flex;
+    margin-top: 30px;
+}
+/*barras de progreso*/
+
+@keyframes showText {
+    100%{
+      opacity: 1;
+    }
+  }
+
+  
+  .stats .bar .progress{
+    height: 10px;
+    width: 100%;
+    left: 0;
+    background: #f0f0f0;
+    position:initial;
+    transform: scaleX(0);
+    transform-origin: left;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
+                0 1px rgba(255,255,255,0.8);
+    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+  }
+
+  @keyframes animate {
+    100%{
+      transform: scaleX(1);
+    }
+  }
+  .bar .progress span{
+    height: 100%;
+    position: absolute;
+    left: 0;
+    border-radius: 10px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: #6665ee;
+    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+  }
+
+  .progress span::before{
+    position: absolute;
+    content: "";
+    top: -10px;
+    right: 0;
+    height: 0;
+    width: 0;
+    border: 7px solid transparent;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-top-color: #000;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+  }
+  .progress span::after{
+    position: absolute;
+    top: -28px;
+    right: 0;
+    font-weight: 500;
+    background: #000;
+    color: #fff;
+    padding: 1px 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    opacity: 0;
+    animation: showText2 0.5s 1.5s linear forwards;
+  }
+
+  @keyframes showText2 {
+    100%{
+      opacity: 1;
+    }
+  }
+
+  .hp::after{
+    content: attr(per);
+  }
+  .attack::after{
+    content: attr(per);
+  }
+  .defense::after{
+    content: attr(per);
+  }
+  .speed::after{
+    content: attr(per);
+  }

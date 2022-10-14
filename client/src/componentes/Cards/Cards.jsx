@@ -60,7 +60,8 @@ export default function Cards({pokemonsActuales}) {
           <span>N</span>
           <span>G</span>
         </div>
-    </div>}
+    </div>
+    }
     </>
   )
 }

@@ -18,6 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
+const { getAllPokemon } = require('./src/controllers/getAllPokemons.js');
 const { getTypes } = require('./src/controllers/getTypes.js');
 const { conn } = require('./src/db.js');
 
@@ -25,6 +26,7 @@ const { conn } = require('./src/db.js');
 conn.sync({ force: true }).then(() => {
   server.listen(3001,async () => {
     await getTypes()
+    await getAllPokemon()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

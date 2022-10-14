@@ -13,11 +13,11 @@ export default function Home() {
   const allPokemon= useSelector((state)=>state.allPokemon)
   // const pokemon= useSelector((state)=>state.allPokemon)
 
-  const [ , setOrden] = useState('')
+  const [ order, setOrden] = useState('')
 
 
   const [paginaActual, setpaginaActual] = useState(1)
-  const [PokemonsPorPagina, ] = useState(12)
+  const [PokemonsPorPagina, setPokemonsPorPagina] = useState(12)
   const inidiceDelUltimoPokemon= paginaActual * PokemonsPorPagina
   const indiceDelPrimerPokemon= inidiceDelUltimoPokemon-PokemonsPorPagina
   const pokemonsActuales= allPokemon.slice(indiceDelPrimerPokemon,inidiceDelUltimoPokemon)
@@ -32,6 +32,7 @@ export default function Home() {
 
   function handleClick(e){
     e.preventDefault();
+    setpaginaActual(1)
     dispatch(getPokemon())
 }
 
@@ -45,7 +46,6 @@ export default function Home() {
       <Link onClick={e=> handleClick(e)}>
                 <button>Refresh</button>
         </Link>
-      
       <SearchBar/>
 
       <Filtros

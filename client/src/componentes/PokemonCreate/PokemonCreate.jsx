@@ -5,13 +5,14 @@ import { getType } from '../../redux/actions'
 import { getPokemon,postPokemon } from '../../redux/actions'
 import validate from './validate';
 import creaTuPokemon from '../../media/creaTuPokemon.png'
+import pokemonCreate from '../../media/pokemonCreate.gif'
 import style from './PokemonCreate.module.css'
 
 export default function PokemonCreate() {
 
     const dispatch= useDispatch()
     const types= useSelector(state=>state.type)
-    // const pokemons = useSelector(state => state.allPokemons)
+    const pokemons = useSelector(state => state.pokemon)
     const history= useHistory()
 
     const [input, setinput] = useState({
@@ -51,9 +52,10 @@ export default function PokemonCreate() {
     
     
     function handleTypes(e){
+        
         setinput({
             ...input,
-            types:[...input.types, e.target.value]
+            types:[...new Set([...input.types, e.target.value])]
         })
         seterrors(validate({
             ...input,
@@ -63,10 +65,16 @@ export default function PokemonCreate() {
     }
     function handleSubmit(e){
         e.preventDefault();
-            // seterrors(validate(input))
-        // if(Object.keys(errors).length === 0 && input.name.length){
+        if(!input.name){
+            alert("Introducir nombre")
+
+        }
+        else if(pokemons.find(e=>e.name.toLowerCase()===input.name.toLowerCase())){
+            alert("El pokemon ya existe")
+        }
+        
+        else{
             dispatch(postPokemon(input));
-            // dispatch(getPokemon());
             setinput({
                 name: '',
                 img:'',
@@ -80,9 +88,7 @@ export default function PokemonCreate() {
             })
             alert("pokemon creado")
             history.push("/home")
-            if(setinput.name.length<0){
-                alert("error")
-            }
+        }
     }
 // console.log(setinput)
 //     console.log(errors)
@@ -95,14 +101,17 @@ export default function PokemonCreate() {
     }
 
   return (
-    <div>
-        
-        <Link to='/home'>
-            <button> Volver a home </button>
-        </Link>
-        <div>
+      <div className={style.todo}>
+ 
+        <div className={style.creaTuPokemon}>
             <img src={creaTuPokemon}/>
         </div>
+
+    <div className={style.formulario}>
+      <div>
+
+     
+     
 
 
         <form onSubmit={(e)=>handleSubmit(e)}>
@@ -114,7 +123,7 @@ export default function PokemonCreate() {
                     value={input.name}
                     name="name"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.name ? <p className="danger"> {errors.name} </p> : null}
                  
@@ -127,7 +136,7 @@ export default function PokemonCreate() {
                     value={input.hp}
                     name="hp"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.hp ? <p className="danger"> {errors.hp} </p> : null}
                 </div>
@@ -139,7 +148,7 @@ export default function PokemonCreate() {
                     value={input.attack}
                     name="attack"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
              </p>
           {errors.attack ? <p className="danger"> {errors.attack} </p> : null}
                      
@@ -152,7 +161,7 @@ export default function PokemonCreate() {
                     value={input.defense}
                     name="defense"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.defense ? <p className="danger"> {errors.defense} </p> : null}
                 </div>
@@ -164,7 +173,7 @@ export default function PokemonCreate() {
                     value={input.speed}
                     name="speed"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.speed ? <p className="danger"> {errors.speed} </p> : null}
                 </div>
@@ -176,7 +185,7 @@ export default function PokemonCreate() {
                     value={input.weight}
                     name="weight"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.weight ? <p className="danger"> {errors.weight} </p> : null}
                 </div>
@@ -188,7 +197,7 @@ export default function PokemonCreate() {
                     value={input.height}
                     name="height"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.height ? <p className="danger"> {errors.height} </p> : null}
                 </div>
@@ -201,7 +210,7 @@ export default function PokemonCreate() {
                     value={input.img}
                     name="img"
                     onChange={(e)=>handleChange(e)}
-                     />
+                    />
                       </p>
           {errors.img ? <p className="danger"> {errors.img} </p> : null}
                 </div>
@@ -220,37 +229,47 @@ export default function PokemonCreate() {
                 </select>
            
                
-                <ul><li>{input.types.map(el=> el+ " ,")}</li></ul>
+                {/* <ul><li>{input.types.map(el=> el+ " ,")}</li></ul> */}
 
                 </p>
           {errors.types ? <p className="danger"> {errors.types} </p> : null}
                
-                    </div>
-                        <div>
-
-                        {
-                            input.length<1 ? 
-                            <button type="submit" disabled>Crear pokemon</button>
-
-                            :<button type="submit" disabled={ Object.keys(errors).length<1 ? false : true}>Crear pokemon</button>
-                        }
+            </div>
+                  
+                  {
+                      input.length<1 ? 
+                      <button type="submit" disabled>Crear pokemon</button>
+                      
+                      :<button className={style.botonSubmit} type="submit" disabled={ Object.keys(errors).length<1 ? false : true}>Crear pokemon</button>
+                  }
+          
                 
-                        </div>
 
            
             </form>
 
         {
-        input.types.map(el=>
-        <div> 
+            input.types.map(el=>
+                <div> 
             <button>{el}<button className='boton' onClick={()=>handleDelete(el)} >X</button></button>
             
         </div>
-
-            )
+        )
         }
-          
+         </div>  
+
+        <div className={style.imagen}>
+        <img src={pokemonCreate}/>
+        </div>
+        </div>
+
+        <Link to='/home'>
+        <button className={style.botonVolver}> Volver a home </button>
+    </Link>
+
+
     </div>
+    
   )
 
  

@@ -42,6 +42,11 @@ export default function rootReducer(state=initialState,action){
                 detail:action.payload
             }
 
+        case "CLEAR":
+            return{
+                ...state,
+                detail:[]
+            }
             //?====== filtros===== 
 
             

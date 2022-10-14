@@ -11,7 +11,7 @@ function LandingPage() {
         <img src={atrapalosYa} alt=""  width="500px"/>
 
       <Link to="/home">
-        <button className={style.boton}>GO !!!</button>
+        <button className={style.boton}>INGRESAR</button>
      </Link>
         </div>
         <div>

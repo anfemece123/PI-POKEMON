@@ -8,9 +8,6 @@ export default function validate(input){
     if(input.name.length===0){
         errors.name = 'El nombre es requerido'
     }
-    // if(pokemons.indexOf( input.name ) !== -1){
-    //     errors.name = 'A pokemon with that name is already existing'
-    // }
     if(!RegExpressionText.test(input.name)){
         errors.name = 'No se permiten números ni caracteres especiales'
     }
