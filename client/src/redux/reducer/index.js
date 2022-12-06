@@ -32,10 +32,12 @@ export default function rootReducer(state=initialState,action){
                 ...state,
                 type:action.payload
             }
+
         case "POST_POKEMON":
             return{
                 ...state
             }
+
         case "GET_DETAIL":
             return{
                 ...state,
@@ -43,10 +45,12 @@ export default function rootReducer(state=initialState,action){
             }
 
         case "CLEAR":
-            return{
+        return{
                 ...state,
                 detail:[]
             }
+
+       
             //?====== filtros===== 
 
             

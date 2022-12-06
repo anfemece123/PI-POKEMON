@@ -17,16 +17,18 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { getAllPokemon } = require('./src/controllers/getAllPokemons.js');
-const { getTypes } = require('./src/controllers/getTypes.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { getAllPokemon } = require("./src/controllers/getAllPokemons.js");
+const { getTypes } = require("./src/controllers/getTypes.js");
+const { conn } = require("./src/db.js");
+
+const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001,async () => {
-    await getTypes()
-    await getAllPokemon()
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  server.listen(3001, async () => {
+    await getTypes();
+    await getAllPokemon();
+    console.log(`%s listening at ${port}`); // eslint-disable-line no-console
   });
 });

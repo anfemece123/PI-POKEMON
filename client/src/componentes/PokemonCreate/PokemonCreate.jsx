@@ -56,6 +56,7 @@ export default function PokemonCreate() {
         setinput({
             ...input,
             types:[...new Set([...input.types, e.target.value])]
+            
         })
         seterrors(validate({
             ...input,

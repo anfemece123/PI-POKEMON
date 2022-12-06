@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getType,filterCreated, filterPokemonsByType,orderByNameOrStrengh, getPokemon} from '../../redux/actions'
+import style from './Filtros.module.css'
 
 
 export default function Filtros({setpaginaActual,setOrden}) {
@@ -16,27 +17,28 @@ export default function Filtros({setpaginaActual,setOrden}) {
     function handleFilterByType(e){
         setpaginaActual(1)
         dispatch(filterPokemonsByType(e.target.value));
-        setOrden(`Ordenado ${e.target.value}`)
+        // setOrden(e.target.value)
     }
 
     function handleFilterCreated(e){
         setpaginaActual(1)
         dispatch(filterCreated(e.target.value))
-        setOrden(`Ordenado ${e.target.value}`)
+        // setOrden(e.target.value)
 
     }
     function handleSort(e){
         e.preventDefault();
         dispatch(orderByNameOrStrengh(e.target.value));
         setpaginaActual(1);
-        setOrden(`Ordenado ${e.target.value}`)
+        setOrden(e.target.value)
     }
  
     
   return (
-    <div>
-       
-        <select onChange={e => handleFilterByType(e)}>
+    <div className={style.filtros} >
+
+       <label htmlFor="">Tipos: </label>
+        <select  class="form-select"  aria-label="Default select example" onChange={e => handleFilterByType(e)}>
             <option value="All">all types</option>
                 {
                     types.map( type => (
@@ -46,14 +48,14 @@ export default function Filtros({setpaginaActual,setOrden}) {
         </select>
         
 
-        
-        <select  onChange={e=> handleFilterCreated(e)}>
+        <label htmlFor="">Tipos: </label>
+        <select class="form-select"  aria-label="Default select example" onChange={e=> handleFilterCreated(e)}>
             <option value="All">All</option>
             <option value="Api">Pokemon existente</option>
             <option value="Created">Pokemon creado</option>
         </select>
-
-        <select onChange={e => handleSort(e)}>
+        <label htmlFor="">Tipos: </label>
+        <select class="form-select" aria-label="Default select example" onChange={e => handleSort(e)}>
             <option value="normal">Normal</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>

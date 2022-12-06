@@ -1,0 +1,9 @@
+.filtros{
+    display: flex;
+    width: 1000px;
+    margin: 30px;
+    /* justify-content: center; */
+    /* justify-items: center; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+}

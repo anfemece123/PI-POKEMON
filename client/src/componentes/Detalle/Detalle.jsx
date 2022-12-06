@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getDetalle,clear } from '../../redux/actions'
+import { clear, getDetalle} from '../../redux/actions'
 import loadingImg from '../../media/loading.gif'
 import style from './Detalle.module.css'
 
@@ -13,13 +13,10 @@ export default function Detalle(props) {
     useEffect(() => {
 
      dispatch(getDetalle(props.match.params.id))
-    
      return()=>{
-
-    dispatch(clear())
+        dispatch(clear())
      }
 },[dispatch])
-
   
 
   return (

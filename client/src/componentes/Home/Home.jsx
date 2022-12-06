@@ -5,7 +5,7 @@ import Cards from '../Cards/Cards.jsx'
 import Filtros from '../Filtros/Filtros.jsx'
 import SearchBar from '../SearchBar/SearchBar.jsx'
 import Paginado from '../Paginado/Paginado.jsx'
-import {getPokemon} from '../../redux/actions/index'
+import {deletePokemon, getPokemon} from '../../redux/actions/index'
 
 export default function Home() {
 
@@ -58,8 +58,10 @@ export default function Home() {
       allPokemon={allPokemon.length}
       paginado={paginado}
       />
-        <Cards
-        pokemonsActuales={pokemonsActuales}/>
+
+      <Cards
+      pokemonsActuales={pokemonsActuales}
+      />
 
       <Paginado
       pokemonPorPagina={PokemonsPorPagina}

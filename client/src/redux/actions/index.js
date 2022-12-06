@@ -53,11 +53,14 @@ export const getDetalle=(id)=>{
     }
 }
 
-export const clear=()=>{
-    return{
+
+export const  clear=(payload)=>{
+    return {
         type:"CLEAR",
+        payload
     }
 }
+
 
 //?===filtros=====
 

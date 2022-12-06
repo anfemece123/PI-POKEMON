@@ -24,7 +24,6 @@ export default function Cards({pokemonsActuales}) {
               <Link to={`/detail/${elemento.id}`}>
 
                 <Card
-                
                 key={elemento.id}
                 name={elemento.name}
                 img={elemento.img}
@@ -34,7 +33,7 @@ export default function Cards({pokemonsActuales}) {
                 defense={elemento.defense}
                 hp={elemento.hp}
                 />
-              </Link>
+               </Link>
                 
                 )
                 :
