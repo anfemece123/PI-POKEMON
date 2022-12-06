@@ -26,7 +26,7 @@ const port = process.env.PORT || 3001;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  server.listen(3001, async () => {
+  server.listen(port, async () => {
     await getTypes();
     await getAllPokemon();
     console.log(`%s listening at ${port}`); // eslint-disable-line no-console
