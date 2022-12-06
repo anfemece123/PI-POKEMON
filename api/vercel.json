@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/pokemon(.*)",
+      "src": "/(.*)",
       "dest": "/pokemon"
     }
   ]
