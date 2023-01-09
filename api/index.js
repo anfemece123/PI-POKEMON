@@ -21,12 +21,12 @@ const server = require("./src/app.js");
 const { getAllPokemon } = require("./src/controllers/getAllPokemons.js");
 const { getTypes } = require("./src/controllers/getTypes.js");
 const { conn } = require("./src/db.js");
-const app = express();
+// const app = express();
 
 const port = process.env.PORT || 3001;
-app.get("/", (req, res) => {
-  res.send("La pagina inicio");
-});
+// app.get("/", (req, res) => {
+//   res.send("La pagina inicio");
+// });
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
